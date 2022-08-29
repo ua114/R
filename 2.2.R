@@ -115,5 +115,50 @@ plot(MWT1Best_AGE)
 hist(residualVals, main = "Histogram of residuals", xlab = "Residuals") 
 
 #......................................................................
-#Multiple regression model with lung function, age and walking distance 
+# Multiple regression model with lung function, age and walking distance 
 #......................................................................
+
+# Command: Model name <- lm(outcome ~ predictor1 + predictor2, data =dataframe) 
+
+MWT1Best_FEV1_AGE <- lm(MWT1Best~FEV1+AGE, data = COPD) 
+
+# MWT1Best_FEV1_AGE is the name of our model 
+# FEV1 is the first predictor variable 
+# MWT1Best is the outcome variable 
+# AGE is the second predictor variable 
+
+summary(MWT1Best_FEV1_AGE) #Output of model 
+confint(MWT1Best_FEV1_AGE) #Confidence intervals of model
+
+#......................................................................
+# Multiple regression model with FVC, age and walking distance 
+#......................................................................
+
+#First find the relationship between FVC and walking distance 
+
+hist(COPD$FVC, breaks = 10)
+
+MWT1Best_FVC <- lm(MWT1Best ~ FVC, data =COPD)
+plot(MWT1Best_FVC)
+
+#Finding the individual relationships between the variables
+
+summary(MWT1Best_FVC)
+confint(MWT1Best_FVC)
+
+summary(MWT1Best_AGE)
+confint(MWT1Best_AGE)
+
+#Multiple regression calculation
+
+MWT1Best_FVC_AGE <- lm(MWT1Best~FVC+AGE, data = COPD)
+
+summary(MWT1Best_FVC_AGE)
+confint(MWT1Best_FVC_AGE)
+
+
+
+
+
+
+
