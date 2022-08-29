@@ -156,8 +156,9 @@ MWT1Best_FVC_AGE <- lm(MWT1Best~FVC+AGE, data = COPD)
 summary(MWT1Best_FVC_AGE)
 confint(MWT1Best_FVC_AGE)
 
-
-
+cor.test(COPD$FVC,COPD$AGE,method='spearman',use='complete.obs', exact = FALSE)
+# spearman of -0.18 shows a weak correlation betweem FVC and age thus lowering
+# the chances of colinearlity 
 
 
 
